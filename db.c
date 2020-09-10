@@ -633,7 +633,9 @@ PrepareResult prepare_statement(InputBuffer* input_buffer,
   if (strncmp(input_buffer->buffer, "insert", 6) == 0) {
     return prepare_insert(input_buffer, statement);
   }
-  if (strcmp(input_buffer->buffer, "select") == 0) {
+  char const* i = input_buffer->buffer;
+  int a = strncmp(i, "select", 6);
+  if (a == 0) {
     statement->type = STATEMENT_SELECT;
     return PREPARE_SUCCESS;
   }
