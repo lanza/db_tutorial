@@ -1,5 +1,5 @@
 db: db.c
-	clang db.c -o db
+	clang -g db.c -o db
 
 run: db
 	./db mydb.db
